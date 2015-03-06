@@ -1,4 +1,3 @@
-
 def movie_attributes(overrides = {})
   {
     title: "Iron Man",
