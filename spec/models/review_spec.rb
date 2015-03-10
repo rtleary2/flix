@@ -62,4 +62,14 @@ describe "A review" do
       expect(review.errors[:stars].first).to eq("must be between 1 and 5")
     end
   end
+
+  it "requires a location" do
+    review = Review.new(location: "")
+
+    review.valid?
+
+    expect(review.errors[:location].any?).to eq(true)
+  end
+
+
 end
