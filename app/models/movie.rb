@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  
+  has_many :reviews, dependent: :destroy 
 
   RATINGS = %w(G PG PG-13 R NC-17)
 
@@ -13,7 +15,6 @@ class Movie < ActiveRecord::Base
     in: RATINGS,
     message: "is not included in #{RATINGS}"
   }
-
 
   def self.released
     where("released_on <= ?", Time.now).order("released_on desc")
