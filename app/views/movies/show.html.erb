@@ -27,6 +27,16 @@
   <p>
     <%= format_total_gross(@movie) %>
   </p>
+
+  <h3>Reviews</h3>
+  <% if @movie.reviews.any? %>
+    <p>
+      <%= link_to pluralize(@movie.reviews.size, "review"), 
+                    movie_reviews_path(@movie) %>
+    </p>
+  <% else %>
+    <p> There are no reviews for this movie yet </p>
+  <% end %>
   
   <footer>
     <nav>
