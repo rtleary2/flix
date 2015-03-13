@@ -28,15 +28,22 @@
     <%= format_total_gross(@movie) %>
   </p>
 
-  <h3>Reviews</h3>
-  <% if @movie.reviews.any? %>
+  <h3>Average Review</h3>
+  <p>
+    <%= format_average_stars(@movie) %>
+  </p>
+
+  <% if @movie.recent_reviews.any? %>
+    <h3>Recent Reviews</h3>
+    <%= render '/shared/reviews', reviews: @movie.recent_reviews %>
     <p>
-      <%= link_to pluralize(@movie.reviews.size, "review"), 
+      Read all <%= link_to pluralize(@movie.reviews.size, "review"), 
                     movie_reviews_path(@movie) %>
     </p>
   <% else %>
-    <p> There are no reviews for this movie yet </p>
+    <p>There are no reviews yet. Add one!</p>
   <% end %>
+
   
   <footer>
       <%= link_to 'Write Review', new_movie_review_path(@movie), class: 'button ok review' %>
