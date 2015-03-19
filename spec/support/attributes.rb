@@ -20,3 +20,12 @@ def review_attributes(overrides = {})
     location: "Chicago, IL"
   }.merge(overrides)
 end
+
+def user_attributes(overrides = {})
+  {
+    name: "Example User",
+    email: "user@example.com",
+    password: "secret",
+    password_confirmation: "secret"
+  }.merge(overrides)
+end
