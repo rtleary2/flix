@@ -50,6 +50,30 @@ describe "A user" do
     expect(user.valid?).to eq(true)
   end
 
+  it "requires a username" do
+    user = User.new(username: "")
+
+    user.valid?
+
+    expect(user.errors[:username].any?).to eq(true)
+  end
+
+  it "does not allow a username with a space in it" do
+    user = User.new(username: "ry an")
+
+    user.valid?
+
+    expect(user.errors[:username].any?).to eq(true)
+  end
+
+  it "does not allow a username with a special character in it" do
+    user = User.new(username: "ry*an")
+
+    user.valid?
+
+    expect(user.errors[:username].any?).to eq(true)
+  end
+
   it "requires a password" do
     user = User.new(password: "")
 
